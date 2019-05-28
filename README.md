@@ -13,3 +13,8 @@ http://localhost:3000/usuario
 
 post: body -> x-www-form-urlencoded
     key necesaria: nombre
+
+
+
+
+INICIAR MONGODB: PONGO mongo en la consola
