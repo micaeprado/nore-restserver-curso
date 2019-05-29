@@ -17,4 +17,7 @@ post: body -> x-www-form-urlencoded
 
 
 
-INICIAR MONGODB: PONGO mongo en la consola
+INICIAR 
+MONGODB: PONGO mongo en la consola,
+postman
+/trabajo/nodejs/nore-restserver-curso/server$ nodemon server
