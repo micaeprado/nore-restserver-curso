@@ -1,0 +1,29 @@
+put:
+http://localhost:3000/usuario/asd
+
+
+get, delete y post:
+http://localhost:3000/usuario
+
+post: body -> x-www-form-urlencoded
+    key necesaria: nombre
+
+
+
+
+INICIAR 
+MONGODB: 
+poner primero :
+    sudo systemctl start mongod 
+y luego :
+    mongo
+
+
+postman
+/trabajo/nodejs/nore-restserver-curso/server$ nodemon server
+
+mongo atlas 
+user: micaeprado
+pass: jWTCMTj9qYdEm6J
+
+mongodb+srv://micaeprado:<password>@cluster0-l5dgu.mongodb.net/test
