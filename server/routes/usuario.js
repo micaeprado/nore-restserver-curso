@@ -13,9 +13,9 @@ app.get('/usuario', (req, res) => {
     let desde = req.query.desde || 0;
     desde = Number(desde);
 
-    let limite = req.query.limite || 5;
+    let limite = req.query.limite;
     limite = Number(limite);
-    Usuario.find({}, 'nombre email role estado imagen')
+    Usuario.find({ estado: true }, 'nombre email role estado imagen')
         .skip(desde)
         .limit(limite)
         .exec((err, usuarios) => {
@@ -26,7 +26,7 @@ app.get('/usuario', (req, res) => {
                 });
             }
 
-            Usuario.count({}, (err, conteo) => {
+            Usuario.count({ estado: true }, (err, conteo) => {
                 res.json({
                     ok: true,
                     usuarios,
@@ -94,9 +94,14 @@ app.put('/usuario/:id', (req, res) => {
 app.delete('/usuario/:id', (req, res) => {
 
     let id = req.params.id;
+    let body = req.body;
 
+    const cambiaEstado = {
+        estado: false
+    };
 
-    Usuario.findByIdAndUpdate(id, body, { new: true }, (err, usuarioBorrado) => {
+    // Usuario.findByIdAndRemove(id, (err, usuarioBorrado) => {
+    Usuario.findByIdAndUpdate(id, cambiaEstado, { new: true }, (err, usuarioBorrado) => {
             if (err) {
                 return res.status(400).json({
                     ok: false,
@@ -115,31 +120,10 @@ app.delete('/usuario/:id', (req, res) => {
 
             res.json({
                 ok: true,
-                usuario: usuarioDB
+                usuario: usuarioBorrado
             });
         })
         // Usuario.findByIdAndRemove(id, (err, usuarioBorrado) => {
-
-    //     if (err) {
-    //         return res.status(400).json({
-    //             ok: false,
-    //             err
-    //         });
-    //     }
-    //     if (!usuarioBorrado) {
-    //         return res.status(400).json({
-    //             ok: false,
-    //             err: {
-    //                 message: 'Usuario no encontrado'
-    //             }
-    //         });
-    //     }
-
-    //     res.json({
-    //         ok: true,
-    //         usuario: usuarioBorrado
-    //     });
-    // });
 });
 
 module.exports = app;
