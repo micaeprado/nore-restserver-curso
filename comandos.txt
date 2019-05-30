@@ -26,4 +26,5 @@ mongo atlas
 user: micaeprado
 pass: jWTCMTj9qYdEm6J
 
-mongodb+srv://micaeprado:<password>@cluster0-l5dgu.mongodb.net/test
+mongoDB URL
+mongodb+srv://micaeprado:jWTCMTj9qYdEm6J@cluster0-l5dgu.mongodb.net/cafe
